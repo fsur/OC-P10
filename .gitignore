@@ -1,0 +1,164 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# pipenv
+#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
+#   However, in case of collaboration, if having platform-specific dependencies or dependencies
+#   having no cross-platform support, pipenv may install dependencies that don't work, or not
+#   install all needed dependencies.
+#Pipfile.lock
+
+# PEP 582; used by e.g. github.com/David-OConnor/pyflow
+__pypackages__/
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+**/__pycache__/**
+*.pyc
+*.pkl
+/*/dataset/*
+*.csv
+/datasets/project_8/**/*.png
+/datasets/project_8/**/*.json
+!OC-Project_6/*.log
+/OC-Project_6/Énoncé+pour+étudiants+-+Microsoft+Azure+-+Ingénieur+IA.pdf
+/OC-Project_6/Images.pdf
+/OC-Project_6/NLP.pdf
+/OC-Project_6/P6_01_notebook_analyse_exploiratoire.html
+/OC-Project_6/P6_02_notebook_API.html
+/OC-Project_6/P6_03_notebook_image_analysis.html
+/OC-Project_6/P6_04_notebook_NLP_analysis.html
+/OC-Project_6/VGG16_fine_tune.h5
+/OC-Project_6/VGG16_trained.h5
+/utils/.project
+/utils/.pydevproject
+/utils/.settings/org.eclipse.core.resources.prefs
+
+.project
+.pydevproject
+
+/datasets
+/OC-Project_8/app/static/input
+
+/cours_flask
+
+/OC-Project_9/bookshelf/*
+/OC-Project_8/app/models/model_simple.h5
+!/OC-Project_9/bookshelf/config.json
+/OC-Project_10/_13.core-bot
+!/OC-Project_10/_21.corebot-app-insights
+/OC-Project_10/echo_bot
