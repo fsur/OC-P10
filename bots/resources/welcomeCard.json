@@ -1,0 +1,36 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.0",
+  "body": [
+    {
+      "type": "Image",
+      "url": "https://user.oc-static.com/upload/2019/10/24/15719199766568_Capture%20d%E2%80%99e%CC%81cran%202019-10-24%20a%CC%80%2014.14.41.png",
+      "size": "stretch"
+    },
+    {
+      "type": "TextBlock",
+      "spacing": "medium",
+      "size": "default",
+      "weight": "bolder",
+      "text": "Welcome to Fly Me flight booking service!",
+      "wrap": true,
+      "maxLines": 0
+    },
+    {
+      "type": "TextBlock",
+      "size": "default",
+      "isSubtle": "true",
+      "text": "Exhausted from staying home because of COVID? Book your next flight now! Simply talk to our agent and tell him your destination, departure and return dates and fly to your destiny!",
+      "wrap": true,
+      "maxLines": 0
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.OpenUrl",
+      "title": "Visit our website!",
+      "url": "https://flymesite.com/"
+    }
+  ]
+}
