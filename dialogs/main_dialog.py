@@ -12,8 +12,7 @@ from botbuilder.core import (
     MessageFactory,
     TurnContext,
     BotTelemetryClient,
-    NullTelemetryClient,
-    Severity
+    NullTelemetryClient
 )
 from botbuilder.schema import InputHints
 
@@ -49,6 +48,7 @@ class MainDialog(ComponentDialog):
         self.add_dialog(text_prompt)
         self.add_dialog(booking_dialog)
         self.add_dialog(wf_dialog)
+        self.booking_details = BookingDetails()
 
         self.initial_dialog_id = "WFDialog"
 
@@ -61,7 +61,7 @@ class MainDialog(ComponentDialog):
                     input_hint=InputHints.ignoring_input,
                 )
             )
-
+            
             return await step_context.next(None)
         message_text = (
             str(step_context.options)
@@ -80,15 +80,18 @@ class MainDialog(ComponentDialog):
         if not self._luis_recognizer.is_configured:
             # LUIS is not configured, we just run the BookingDialog path with an empty BookingDetailsInstance.
             return await step_context.begin_dialog(
-                self._booking_dialog_id, BookingDetails()
+                self._booking_dialog_id, self.booking_details
             )
 
         # Call LUIS and gather any potential booking details. (Note the TurnContext has the response to the prompt.)
         intent, luis_result = await LuisHelper.execute_luis_query(
             self._luis_recognizer, step_context.context
         )
-
+        
+        self.booking_details.dialogs.append(step_context.context.activity.text)
         if intent == Intent.BOOK_FLIGHT.value and luis_result:
+            luis_result.dialogs.extend(self.booking_details.dialogs)
+            self.booking_details = luis_result
             # Show a warning for Origin and Destination if we can't resolve them.
             await MainDialog._show_warning_for_unsupported_cities(
                 step_context.context, luis_result
@@ -96,7 +99,7 @@ class MainDialog(ComponentDialog):
 
             # Run the BookingDialog giving it whatever details we have from the LUIS call.
             return await step_context.begin_dialog(self._booking_dialog_id, luis_result)
-
+        
         didnt_understand_text = (
             "Sorry, I didn't get that. Please try asking in a different way"
         )
@@ -121,10 +124,6 @@ class MainDialog(ComponentDialog):
             msg_txt = f"I have you booked a travel from {result.origin} to {result.destination} on {result.start_travel_date} and a return on {result.end_travel_date}."
             message = MessageFactory.text(msg_txt, msg_txt, InputHints.ignoring_input)
             await step_context.context.send_activity(message)
-        else:
-            self.telemetry_client.track_trace(name="not-understood-trace",
-                                              properties={"step_context_index":str(step_context.index)},
-                                              severity=Severity.error)
 
         prompt_message = "What else can I do for you?"
         return await step_context.replace_dialog(self.id, prompt_message)
@@ -147,3 +146,4 @@ class MainDialog(ComponentDialog):
                 message_text, message_text, InputHints.ignoring_input
             )
             await context.send_activity(message)
+            context.responses.append(message)

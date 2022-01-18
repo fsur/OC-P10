@@ -11,12 +11,16 @@ class BookingDetails:
         end_travel_date: str = None,
         budget: float = None,
         unsupported_airports=None,
+        dialogs=None
     ):
         if unsupported_airports is None:
             unsupported_airports = []
+        if dialogs is None:
+            dialogs = []
         self.destination = destination
         self.origin = origin
         self.start_travel_date = start_travel_date
         self.end_travel_date = end_travel_date
         self.budget = budget
         self.unsupported_airports = unsupported_airports
+        self.dialogs = dialogs
